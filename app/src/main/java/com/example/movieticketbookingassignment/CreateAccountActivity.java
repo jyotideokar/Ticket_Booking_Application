@@ -32,18 +32,18 @@ public class CreateAccountActivity extends AppCompatActivity {
 
                 String user = usernameEdit.getText().toString();
                 String email = emailEdit.getText().toString();
+                String password = passwordEdit.getText().toString();
 
 
 
-
-                if (user.equals("")) {
+                if (user.equals("") && password.equals("")) {
                     Toast.makeText(getApplicationContext(), "Please Fill All The Fields", Toast.LENGTH_SHORT).show();
                 } else {
 
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("name", user);
                     editor.putString("mail", email);
-
+                    editor.putString("lock", password);
                     editor.commit();
                 }
             }
