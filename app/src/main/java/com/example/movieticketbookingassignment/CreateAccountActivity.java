@@ -32,6 +32,9 @@ public class CreateAccountActivity extends AppCompatActivity {
 
                 String user = usernameEdit.getText().toString();
                 String email = emailEdit.getText().toString();
+
+
+
                 String password = passwordEdit.getText().toString();
 
 
