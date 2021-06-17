@@ -15,6 +15,8 @@ public class CreateAccountActivity extends AppCompatActivity {
     private Button registerBttn;
     private SharedPreferences sharedPreferences;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,8 +26,6 @@ public class CreateAccountActivity extends AppCompatActivity {
         emailEdit = findViewById(R.id.emailEdit);
         passwordEdit = findViewById(R.id.passwordEdit);
         sharedPreferences = getSharedPreferences("Demo", MODE_PRIVATE);
-
-
         registerBttn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -33,8 +33,6 @@ public class CreateAccountActivity extends AppCompatActivity {
                 String user = usernameEdit.getText().toString();
                 String email = emailEdit.getText().toString();
                 String password = passwordEdit.getText().toString();
-
-
 
                 if (user.equals("") && password.equals("")) {
                     Toast.makeText(getApplicationContext(), "Please Fill All The Fields", Toast.LENGTH_SHORT).show();
@@ -44,7 +42,10 @@ public class CreateAccountActivity extends AppCompatActivity {
                     editor.putString("name", user);
                     editor.putString("mail", email);
                     editor.putString("lock", password);
-                    editor.commit();
+                    editor.apply();
+                    Intent intent = new Intent(CreateAccountActivity.this,Content_List_Activity.class);
+                    startActivity(intent);
+                    finish();
                 }
             }
         });
