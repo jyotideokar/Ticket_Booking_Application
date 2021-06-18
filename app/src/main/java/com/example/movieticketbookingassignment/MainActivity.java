@@ -30,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
         createText = findViewById(R.id.createText);
         loginBttn = findViewById(R.id.loginBttn);
         sharedPreferences = getSharedPreferences("Demo", MODE_PRIVATE);
-        user = sharedPreferences.getString("name", "");
-        password = sharedPreferences.getString("lock", "");
+        user = sharedPreferences.getString("name", null);
+        password = sharedPreferences.getString("lock", null);
 
 
         createText.setOnClickListener(new View.OnClickListener() {
