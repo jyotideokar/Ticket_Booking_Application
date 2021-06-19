@@ -7,13 +7,19 @@
     android:background="@drawable/bacground_ui_design"
     tools:context=".Content_List_Activity">
 
-    <ImageView
-        android:id="@+id/movieImage"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:src="@drawable/threeidiot"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <me.relex.circleindicator.CircleIndicator
+        android:id="@+id/circleIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="@id/viewPager" />
+
 
     <LinearLayout
         android:id="@+id/cityLayout"
@@ -23,7 +29,7 @@
         android:orientation="horizontal"
         android:weightSum="2.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/movieImage">
+        app:layout_constraintTop_toBottomOf="@id/viewPager">
 
         <TextView
             android:layout_width="wrap_content"
@@ -39,8 +45,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:textSize="20sp"
-            android:layout_weight="1.5" />
+            android:layout_weight="1.5"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout

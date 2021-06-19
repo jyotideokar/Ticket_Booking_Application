@@ -1,6 +1,7 @@
 package com.example.movieticketbookingassignment;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,9 @@ import android.widget.Spinner;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import me.relex.circleindicator.CircleIndicator;
 
 public class Content_List_Activity extends AppCompatActivity {
 
@@ -21,6 +25,8 @@ public class Content_List_Activity extends AppCompatActivity {
     ArrayAdapter<String> arrayAdapter_theater;
     ArrayList<String> Nathganga, shantinath, chitralay, Carnival, Multiplex, Maratha;
     ArrayAdapter<String> arrayAdapter_time;
+    CircleIndicator circleIndicator;
+    ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +35,18 @@ public class Content_List_Activity extends AppCompatActivity {
         timeSpinner = findViewById(R.id.timeSpinner);
         theaterSpinner = findViewById(R.id.theaterSpinner);
         citySpinner = findViewById(R.id.citySpinner);
+        circleIndicator = findViewById(R.id.circleIndicator);
+        viewPager = findViewById(R.id.viewPager);
+        List<Integer> imageList = new ArrayList<>();
+        imageList.add(R.drawable.kkkg);
+        imageList.add(R.drawable.bahubali);
+        imageList.add(R.drawable.ddlj);
+        imageList.add(R.drawable.jab_we_met);
+        imageList.add(R.drawable.threeidiot);
+        ViewPagerAdaptor viewPagerAdaptor = new ViewPagerAdaptor(imageList);
+        viewPager.setAdapter(viewPagerAdaptor);
+
+        circleIndicator.setViewPager(viewPager);
 
         arrayList_city = new ArrayList<>();
         arrayList_city.add("Loni");

@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 user1 = usernameEdit.getText().toString();
                 password1 = passwordEdit.getText().toString();
 
-                if (user1.equals(" ") && password1.equals(" ")) {
+                if (user1.isEmpty()&& password1.isEmpty()) {
                     Toast.makeText(MainActivity.this,"Enter Username and Password",Toast.LENGTH_SHORT).show();
 
                 } else
