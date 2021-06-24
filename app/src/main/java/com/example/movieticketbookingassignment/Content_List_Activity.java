@@ -3,10 +3,12 @@ package com.example.movieticketbookingassignment;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import com.google.android.material.navigation.NavigationView;
@@ -27,6 +29,7 @@ public class Content_List_Activity extends AppCompatActivity {
     ArrayAdapter<String> arrayAdapter_time;
     CircleIndicator circleIndicator;
     ViewPager viewPager;
+    Button bookBttn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,7 @@ public class Content_List_Activity extends AppCompatActivity {
         timeSpinner = findViewById(R.id.timeSpinner);
         theaterSpinner = findViewById(R.id.theaterSpinner);
         citySpinner = findViewById(R.id.citySpinner);
+        bookBttn = findViewById(R.id.bookBttn);
         circleIndicator = findViewById(R.id.circleIndicator);
         viewPager = findViewById(R.id.viewPager);
         List<Integer> imageList = new ArrayList<>();
@@ -69,8 +73,6 @@ public class Content_List_Activity extends AppCompatActivity {
 
         arrayList_mumbai = new ArrayList<>();
         arrayList_mumbai.add("Maratha Mandir");
-
-
         citySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -149,6 +151,15 @@ public class Content_List_Activity extends AppCompatActivity {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
+            }
+        });
+
+
+        bookBttn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent bookIntent = new Intent(Content_List_Activity.this, SeatBookActivity.class);
+                startActivity(bookIntent);
             }
         });
 

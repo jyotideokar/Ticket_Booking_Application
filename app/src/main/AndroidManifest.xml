@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieTicketBookingAssignment">
-        <activity android:name=".Content_List_Activity"></activity>
+        <activity android:name=".SeatBookActivity"></activity>
+        <activity android:name=".Content_List_Activity" />
         <activity android:name=".CreateAccountActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
