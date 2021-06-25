@@ -47,7 +47,7 @@ public class Content_List_Activity extends AppCompatActivity {
         imageList.add(R.drawable.ddlj);
         imageList.add(R.drawable.jab_we_met);
         imageList.add(R.drawable.threeidiot);
-        ViewPagerAdaptor viewPagerAdaptor = new ViewPagerAdaptor(imageList);
+        ViewPagerAdaptor viewPagerAdaptor = new ViewPagerAdaptor(imageList,this);
         viewPager.setAdapter(viewPagerAdaptor);
 
         circleIndicator.setViewPager(viewPager);

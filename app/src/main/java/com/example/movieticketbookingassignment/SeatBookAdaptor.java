@@ -27,14 +27,13 @@ public class SeatBookAdaptor extends RecyclerView.Adapter<SeatBookAdaptor.ViewHo
         View view = layoutInflater.inflate(R.layout.seat_item_layout, parent, false);
         return new ViewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
        if (integerList.get(position)){
            holder.chairImage.setBackgroundColor(Color.BLUE);
        }
        else {
-           holder.chairImage.setBackgroundColor(Color.WHITE);
+           holder.chairImage.setBackgroundColor(Color.TRANSPARENT );
        }
         holder.chairImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,10 +47,7 @@ public class SeatBookAdaptor extends RecyclerView.Adapter<SeatBookAdaptor.ViewHo
                 notifyDataSetChanged();
             }
         });
-
-
     }
-
     @Override
     public int getItemCount() {
         return integerList.size();
@@ -62,8 +58,6 @@ public class SeatBookAdaptor extends RecyclerView.Adapter<SeatBookAdaptor.ViewHo
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
-
             chairImage = itemView.findViewById(R.id.chairImage);
         }
     }
