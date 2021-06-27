@@ -159,6 +159,8 @@ public class Content_List_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent bookIntent = new Intent(Content_List_Activity.this, SeatBookActivity.class);
+                String timeSlot = timeSpinner.getSelectedItem().toString();
+                bookIntent.putExtra("timeSlot",timeSlot);
                 startActivity(bookIntent);
             }
         });

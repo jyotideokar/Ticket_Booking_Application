@@ -34,7 +34,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                 String email = emailEdit.getText().toString();
                 String password = passwordEdit.getText().toString();
 
-                if (user.equals("") && password.equals("")) {
+                if (user.isEmpty() || password.isEmpty() || email.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Please Fill All The Fields", Toast.LENGTH_SHORT).show();
                 } else {
 
