@@ -75,6 +75,7 @@ public class SeatBookActivity extends AppCompatActivity {
 
 
         movieList = new ArrayList<>();
+        movieList.add(0, "Select Movie Name");
         movieList.add("Kabhi Khushi Kabhi Gham");
         movieList.add("Bahubali 2");
         movieList.add("Dilwale Dulhania le Jayenge");
@@ -90,6 +91,15 @@ public class SeatBookActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String selectedItemText = (String) adapterView.getItemAtPosition(i);
                 text_view.setText("Selected : " + selectedItemText);
+                if (adapterView.getItemAtPosition(i).equals("Select Movie Name")) {
+
+                } else {
+                    moviename = adapterView.getItemAtPosition(i).toString();
+                    Toast.makeText(getApplicationContext(), moviename + " selected successfully", Toast.LENGTH_SHORT).show();
+
+                }
+
+
             }
 
             @Override
@@ -127,7 +137,6 @@ public class SeatBookActivity extends AppCompatActivity {
     private void openCustomDialog() {
 
 
-
         dialog.setContentView(R.layout.custom_pop_up);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         String state = spinner.getSelectedItem().toString();
@@ -159,7 +168,7 @@ public class SeatBookActivity extends AppCompatActivity {
         //sBookText.setText(counter);
 
         dialog.show();
-
-
     }
+
+
 }
