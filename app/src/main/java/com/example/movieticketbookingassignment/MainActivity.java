@@ -49,17 +49,15 @@ public class MainActivity extends AppCompatActivity {
                 password1 = passwordEdit.getText().toString();
 
                 if (user1.isEmpty() && password1.isEmpty()) {
-                    Toast.makeText(MainActivity.this,"Enter Username and Password",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Enter Username and Password", Toast.LENGTH_SHORT).show();
 
-                } else
-                    if (user1.equals(user) && password1.equals(password)){
-                        Intent intent = new Intent(MainActivity.this, Content_List_Activity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                    else {
-                        Toast.makeText(MainActivity.this, "Enter correct username and password", Toast.LENGTH_SHORT).show();
-                    }
+                } else if (user1.equals(user) && password1.equals(password)) {
+                    Intent intent = new Intent(MainActivity.this, Content_List_Activity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(MainActivity.this, "Enter correct username and password", Toast.LENGTH_SHORT).show();
+                }
 
 
             }

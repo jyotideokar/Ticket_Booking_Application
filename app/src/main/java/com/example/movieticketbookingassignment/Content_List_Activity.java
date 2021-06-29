@@ -1,8 +1,5 @@
 package com.example.movieticketbookingassignment;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,8 +7,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
-import com.google.android.material.navigation.NavigationView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,13 +22,14 @@ public class Content_List_Activity extends AppCompatActivity {
     Spinner citySpinner, theaterSpinner, timeSpinner;
     ArrayList<String> arrayList_city;
     ArrayAdapter<String> arrayAdapter_city;
-    ArrayList<String> arrayList_loni, arrayList_shirdi, arrayList_pune, arrayList_mumbai;
+    ArrayList<String> arrayList_theater;
     ArrayAdapter<String> arrayAdapter_theater;
-    ArrayList<String> Nathganga, shantinath, chitralay, Carnival, Multiplex, Maratha;
+    ArrayList<String> timeArrayList;
     ArrayAdapter<String> arrayAdapter_time;
     CircleIndicator circleIndicator;
     ViewPager viewPager;
     Button bookBttn;
+    String selectedCity, selectedTheater, selectedTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +47,13 @@ public class Content_List_Activity extends AppCompatActivity {
         imageList.add(R.drawable.ddlj);
         imageList.add(R.drawable.jab_we_met);
         imageList.add(R.drawable.threeidiot);
-        ViewPagerAdaptor viewPagerAdaptor = new ViewPagerAdaptor(imageList,this);
+        ViewPagerAdaptor viewPagerAdaptor = new ViewPagerAdaptor(imageList, this);
         viewPager.setAdapter(viewPagerAdaptor);
 
         circleIndicator.setViewPager(viewPager);
 
         arrayList_city = new ArrayList<>();
+        arrayList_city.add("Select City");
         arrayList_city.add("Loni");
         arrayList_city.add("Pune");
         arrayList_city.add("Mumbai");
@@ -61,32 +62,32 @@ public class Content_List_Activity extends AppCompatActivity {
 
         citySpinner.setAdapter(arrayAdapter_city);
 
-        arrayList_loni = new ArrayList<>();
-        arrayList_loni.add("Nathganga");
-        arrayList_loni.add("shantinath");
-        arrayList_loni.add("chitralay");
+        arrayList_theater = new ArrayList<>();
 
 
-        arrayList_pune = new ArrayList<>();
-        arrayList_pune.add("Carnival");
-        arrayList_pune.add("Movie Multiplex");
-
-        arrayList_mumbai = new ArrayList<>();
-        arrayList_mumbai.add("Maratha Mandir");
         citySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                if (i == 0) {
-                    arrayAdapter_theater = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList_loni);
+                if (i > 0) {
+                    selectedCity = arrayList_city.get(i);
+                } else {
+                    selectedCity = null;
                 }
+                arrayList_theater.clear();
+                arrayList_theater.add("Select Theater");
                 if (i == 1) {
-                    arrayAdapter_theater = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList_pune);
+                    arrayList_theater.add("Nathganga");
+                    arrayList_theater.add("shantinath");
+                    arrayList_theater.add("chitralay");
                 }
                 if (i == 2) {
-                    arrayAdapter_theater = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList_mumbai);
-
+                    arrayList_theater.add("Carnival");
+                    arrayList_theater.add("Movie Multiplex");
                 }
+                if (i == 3) {
+                    arrayList_theater.add("Maratha Mandir");
+                }
+                arrayAdapter_theater = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList_theater);
                 theaterSpinner.setAdapter(arrayAdapter_theater);
 
             }
@@ -98,53 +99,22 @@ public class Content_List_Activity extends AppCompatActivity {
         });
 
 
-        Nathganga = new ArrayList<>();
-        Nathganga.add("12 P.M");
-        Nathganga.add("4 P.M");
-
-        shantinath = new ArrayList<>();
-        shantinath.add("12 P.M");
-        shantinath.add("4.P.M");
-
-        chitralay = new ArrayList<>();
-        chitralay.add("12 P.M");
-        chitralay.add("4.P.M");
-
-        Carnival = new ArrayList<>();
-        Carnival.add("12 P.M");
-        Carnival.add("4.P.M");
-
-        Multiplex = new ArrayList<>();
-        Multiplex.add("12 P.M");
-        Multiplex.add("4.P.M");
-
-        Maratha = new ArrayList<>();
-        Maratha.add("12 P.M");
-        Maratha.add("4.P.M");
+        timeArrayList = new ArrayList<>();
+        timeArrayList.add("Select Time");
+        timeArrayList.add("12 P.M");
+        timeArrayList.add("4 P.M");
 
         theaterSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if (i == 0) {
-                    arrayAdapter_time = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, Nathganga);
-                }
-                if (i == 1) {
-                    arrayAdapter_time = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, shantinath);
-                }
-                if (i == 2) {
-                    arrayAdapter_time = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, chitralay);
-                }
-                if (i == 3) {
-                    arrayAdapter_time = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, Carnival);
+                if (i > 0) {
+                    selectedTheater = arrayList_theater.get(i);
+                } else {
+                    selectedTheater = null;
                 }
 
-                if (i == 4) {
-                    arrayAdapter_time = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, Multiplex);
-                }
-                if (i == 5) {
-                    arrayAdapter_time = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, Maratha);
-                }
-
+                timeArrayList.clear();
+                arrayAdapter_time = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, timeArrayList);
                 timeSpinner.setAdapter(arrayAdapter_time);
             }
 
@@ -154,14 +124,36 @@ public class Content_List_Activity extends AppCompatActivity {
             }
         });
 
+        timeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position > 0) {
+                    selectedTime = timeArrayList.get(position);
+                } else {
+                    selectedTime = null;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
         bookBttn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent bookIntent = new Intent(Content_List_Activity.this, SeatBookActivity.class);
-                String timeSlot = timeSpinner.getSelectedItem().toString();
-                bookIntent.putExtra("timeSlot",timeSlot);
-                startActivity(bookIntent);
+                if (selectedCity == null || selectedTheater == null || selectedTime == null) {
+                    Toast.makeText(Content_List_Activity.this, "Plesae select all fields", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent bookIntent = new Intent(Content_List_Activity.this, SeatBookActivity.class);
+                    bookIntent.putExtra("Time", selectedTime);
+                    bookIntent.putExtra("City", selectedCity);
+                    bookIntent.putExtra("Theater", selectedTheater);
+                    startActivity(bookIntent);
+                }
+
             }
         });
 

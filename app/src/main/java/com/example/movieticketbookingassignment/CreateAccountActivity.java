@@ -16,7 +16,6 @@ public class CreateAccountActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +42,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                     editor.putString("mail", email);
                     editor.putString("lock", password);
                     editor.apply();
-                    Intent intent = new Intent(CreateAccountActivity.this,Content_List_Activity.class);
+                    Intent intent = new Intent(CreateAccountActivity.this, Content_List_Activity.class);
                     startActivity(intent);
                     finish();
                 }

@@ -62,26 +62,26 @@
         app:layout_constraintStart_toEndOf="@id/timeText"
         app:layout_constraintTop_toTopOf="@id/timeText" />
 
-   <!-- <TextView
-        android:id="@+id/seatText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="No. of Seat Book: "
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/timeText" />
+    <!-- <TextView
+         android:id="@+id/seatText"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_margin="16dp"
+         android:text="No. of Seat Book: "
+         android:textSize="16sp"
+         android:textStyle="bold"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@id/timeText" />
 
-    <TextView
-        android:id="@+id/sBookText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@id/seatText"
-        app:layout_constraintStart_toEndOf="@id/seatText"
-        app:layout_constraintTop_toTopOf="@id/seatText" />-->
+     <TextView
+         android:id="@+id/sBookText"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_margin="16dp"
+         android:textSize="16sp"
+         app:layout_constraintBottom_toBottomOf="@id/seatText"
+         app:layout_constraintStart_toEndOf="@id/seatText"
+         app:layout_constraintTop_toTopOf="@id/seatText" />-->
 
     <Button
         android:id="@+id/saveBttn"
