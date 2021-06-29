@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -27,16 +28,19 @@ public class SeatBookActivity extends AppCompatActivity {
     Spinner spinner;
     ArrayAdapter<String> arrayAdapter_movie;
     Dialog dialog;
+    TextView text_view;
     ArrayList<Boolean> imagelist;
     ArrayList<String> movieList;
+    String moviename;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seat_book);
         recyclerview = findViewById(R.id.recyclerview);
-        spinner = findViewById(R.id.movieList);
+        spinner = findViewById(R.id.spinner);
         saveBttn = findViewById(R.id.saveBttn);
+        text_view = findViewById(R.id.text_view);
         dialog = new Dialog(this);
 
 
@@ -71,15 +75,28 @@ public class SeatBookActivity extends AppCompatActivity {
 
 
         movieList = new ArrayList<>();
-        movieList.add("Select Movie Name");
         movieList.add("Kabhi Khushi Kabhi Gham");
         movieList.add("Bahubali 2");
         movieList.add("Dilwale Dulhania le Jayenge");
         movieList.add("Jab We Met");
         movieList.add("3 Idiots");
-        arrayAdapter_movie = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, movieList);
+        arrayAdapter_movie = new ArrayAdapter<>(getApplicationContext(), R.layout.support_simple_spinner_dropdown_item, movieList);
+        arrayAdapter_movie.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter_movie);
 
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String selectedItemText = (String) adapterView.getItemAtPosition(i);
+                text_view.setText("Selected : " + selectedItemText);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                Toast.makeText(getApplicationContext(), "No selection", Toast.LENGTH_LONG).show();
+            }
+        });
 
 
 
@@ -108,9 +125,13 @@ public class SeatBookActivity extends AppCompatActivity {
 
 
     private void openCustomDialog() {
+
+
+
         dialog.setContentView(R.layout.custom_pop_up);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         String state = spinner.getSelectedItem().toString();
+
         TextView mNameText = dialog.findViewById(R.id.mNameText);
         mNameText.setText(state);
         String time = getIntent().getStringExtra("timeSlot");
